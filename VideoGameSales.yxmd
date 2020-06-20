@@ -1,0 +1,449 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2019.4">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="42" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">D:\Projects\VideoGameSales\data\vgsales.csv</File>
+          <FormatSpecificOptions>
+            <CodePage>28591</CodePage>
+            <Delimeter>,</Delimeter>
+            <IgnoreErrors>False</IgnoreErrors>
+            <FieldLen>254</FieldLen>
+            <AllowShareWrite>False</AllowShareWrite>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>vgsales.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Rank" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="Name" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="Platform" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="Year" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="Genre" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="Publisher" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="NA_Sales" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="EU_Sales" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="JP_Sales" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="Other_Sales" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+            <Field name="Global_Sales" size="254" source="File: D:\Projects\VideoGameSales\data\vgsales.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Transpose.Transpose">
+        <Position x="150" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ErrorWarn>Warn</ErrorWarn>
+          <KeyFields>
+            <Field field="Rank" />
+            <Field field="Name" />
+            <Field field="Platform" />
+            <Field field="Year" />
+            <Field field="Genre" />
+            <Field field="Publisher" />
+          </KeyFields>
+          <DataFields>
+            <Field field="Rank" selected="False" />
+            <Field field="Name" selected="False" />
+            <Field field="Platform" selected="False" />
+            <Field field="Year" selected="False" />
+            <Field field="Genre" selected="False" />
+            <Field field="Publisher" selected="False" />
+            <Field field="NA_Sales" selected="True" />
+            <Field field="EU_Sales" selected="True" />
+            <Field field="JP_Sales" selected="True" />
+            <Field field="Other_Sales" selected="True" />
+            <Field field="Global_Sales" selected="True" />
+            <Field field="*Unknown" selected="False" />
+          </DataFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTranspose" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="258" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Rank" selected="True" />
+            <SelectField field="Name" selected="True" />
+            <SelectField field="Platform" selected="True" />
+            <SelectField field="Year" selected="True" type="Int16" size="2" />
+            <SelectField field="Genre" selected="True" />
+            <SelectField field="Publisher" selected="True" />
+            <SelectField field="Name2" selected="True" rename="Region" />
+            <SelectField field="Value" selected="True" rename="Sales" type="Float" size="4" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="462" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>!=</Operator>
+            <Field>Region</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2020-05-14 20:39:02</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>Global</Operand>
+              <StartDate>2020-05-14 20:39:02</StartDate>
+              <EndDate>2020-05-14 20:39:02</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Region] != "Global"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
+        <Position x="354" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Field>Region</Field>
+          <RegExExpression value="_Sales" />
+          <CaseInsensitve value="True" />
+          <Method>Replace</Method>
+          <Replace expression="">
+            <CopyUnmatched value="True" />
+          </Replace>
+          <ParseSimple>
+            <SplitToRows value="False" />
+            <RootName>Region</RootName>
+            <NumFields value="3" />
+            <ErrorHandling>Warn</ErrorHandling>
+          </ParseSimple>
+          <ParseComplex>
+            <Field field="No Marked Groups Found" type="No Marked Groups Found" size="No Marked Groups Found" />
+          </ParseComplex>
+          <Match>
+            <Field>Rank_Matched</Field>
+            <ErrorUnmatched value="False" />
+          </Match>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRegEx" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="PlotlyCharting">
+        <Position x="582" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ChartingFields>
+            <Traces json:Array="true" xmlns:json="http://james.newtonking.com/projects/json">
+              <type>bar</type>
+              <mode>markers</mode>
+              <orientation>h</orientation>
+              <ysrc>Genre</ysrc>
+              <xsrc>Sales</xsrc>
+              <aggregationField>xsrc</aggregationField>
+              <aggregationFunction>sum</aggregationFunction>
+              <aggregationFieldName>Sales</aggregationFieldName>
+              <textposition>None</textposition>
+              <marker>
+                <line>
+                  <width>0</width>
+                </line>
+              </marker>
+            </Traces>
+            <Layout>
+              <title>
+                <text>
+                </text>
+              </title>
+              <font>
+                <family>sans-serif</family>
+                <size>12</size>
+              </font>
+              <autosize>false</autosize>
+              <width>700</width>
+              <height>849</height>
+              <showlegend>false</showlegend>
+              <hovermode>closest</hovermode>
+              <legend>
+                <font>
+                  <size>12</size>
+                </font>
+                <borderwidth>0</borderwidth>
+              </legend>
+              <xaxis>
+                <range>-58</range>
+                <range>1140</range>
+                <autorange>false</autorange>
+                <title>
+                  <text>Sales</text>
+                </title>
+                <tickfont>
+                  <size>12</size>
+                </tickfont>
+                <nticks>0</nticks>
+                <showgrid>false</showgrid>
+                <showline>false</showline>
+                <type>linear</type>
+              </xaxis>
+              <yaxis>
+                <range>2</range>
+                <range>12</range>
+                <autorange>false</autorange>
+                <title>
+                  <text>Genre</text>
+                </title>
+                <type>category</type>
+              </yaxis>
+              <dragmode>pan</dragmode>
+              <bargap>0.37</bargap>
+              <margin>
+                <pad>0</pad>
+                <t>100</t>
+                <b>80</b>
+                <l>80</l>
+                <r>80</r>
+              </margin>
+            </Layout>
+          </ChartingFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="ComposerInteractiveCharting" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="PlotlyCharting">
+        <Position x="582" y="42" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ChartingFields>
+            <Traces json:Array="true" xmlns:json="http://james.newtonking.com/projects/json">
+              <type>pie</type>
+              <mode>markers</mode>
+              <labelssrc>Region</labelssrc>
+              <valuessrc>Sales</valuessrc>
+              <name>Sales by Region</name>
+              <marker>
+                <line>
+                  <width>0</width>
+                </line>
+              </marker>
+              <hole>0.60000000000000009</hole>
+            </Traces>
+            <Layout>
+              <title>
+                <text>
+                </text>
+              </title>
+              <font>
+                <family>sans-serif</family>
+                <size>12</size>
+              </font>
+              <autosize>false</autosize>
+              <width>700</width>
+              <height>849</height>
+              <showlegend>true</showlegend>
+              <hovermode>closest</hovermode>
+              <xaxis>
+                <range>-0.5</range>
+                <range>11.5</range>
+                <autorange>true</autorange>
+                <type>category</type>
+              </xaxis>
+              <yaxis>
+                <range>0</range>
+                <range>1256.2947359563489</range>
+                <autorange>true</autorange>
+                <type>linear</type>
+              </yaxis>
+              <extendpiecolors>true</extendpiecolors>
+              <piecolorway>#4c78a8</piecolorway>
+              <piecolorway>#f58518</piecolorway>
+              <piecolorway>#e45756</piecolorway>
+              <piecolorway>#72b7b2</piecolorway>
+              <piecolorway>#54a24b</piecolorway>
+              <piecolorway>#eeca3b</piecolorway>
+              <piecolorway>#b279a2</piecolorway>
+              <piecolorway>#ff9da6</piecolorway>
+              <piecolorway>#9d755d</piecolorway>
+              <piecolorway>#bab0ac</piecolorway>
+              <margin>
+                <pad>0</pad>
+                <t>100</t>
+                <b>80</b>
+                <l>80</l>
+                <r>80</r>
+              </margin>
+              <legend>
+                <font>
+                  <size>12</size>
+                </font>
+                <borderwidth>0</borderwidth>
+              </legend>
+            </Layout>
+          </ChartingFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="ComposerInteractiveCharting" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerLayout.PortfolioComposerLayout">
+        <Position x="702" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupingMode>PerRecord</GroupingMode>
+          <PreserveSourceFields value="False" />
+          <Orientation>H</Orientation>
+          <Separator>Continuous</Separator>
+          <Width>100%</Width>
+          <Height />
+          <BorderStyle Enabled="false" Color="#000000" Width="2" />
+          <SeparatorStyle Enabled="false" Color="#000000" Width="1" />
+          <Padding>0</Padding>
+          <LayoutFields orderChanged="False">
+            <Field name="Chart" selected="True" Alignment="Center" />
+          </LayoutFields>
+          <MergeIntoTable value="False" />
+          <SectionNameForGroup />
+          <SectionNameForAllRecords />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Horizontal Layout
+Each Individual Record</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerLayoutPlugin" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="True" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="True" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>VideoGameSales</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
